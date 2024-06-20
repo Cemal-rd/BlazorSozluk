@@ -19,5 +19,9 @@ public class MappingProfile : Profile
             .ReverseMap();
         CreateMap<UpdateUserCommand, User>()
             .ReverseMap();
+        CreateMap<CreateEntryCommand, Entry>()
+            .ReverseMap();
+        CreateMap<CreateEntryCommentCommand, EntryComment>()
+            .ReverseMap();
     }
 }

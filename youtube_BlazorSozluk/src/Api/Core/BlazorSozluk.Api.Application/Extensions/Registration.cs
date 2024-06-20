@@ -18,7 +18,7 @@ public static class Registration
         services.AddMediatR(assm);
         services.AddAutoMapper(assm);
         services.AddValidatorsFromAssembly(assm);
-
+        
         return services;
     }
 }
