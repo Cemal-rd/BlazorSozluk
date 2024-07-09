@@ -6,12 +6,14 @@ using BlazorSozluk.Api.Application.Features.Queries.GetUserEntries;
 using BlazorSozluk.Common.Models.Queries;
 using BlazorSozluk.Common.Models.RequestModels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorSozluk.Api.WebApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+
 public class EntryController : BaseController
 {
     private readonly IMediator mediator;
@@ -29,6 +31,7 @@ public class EntryController : BaseController
     }
     [HttpGet]
     [Route("MainPageEntries")]
+    [Authorize]
     public async Task<IActionResult> GetMainPageEntries(int page,int pagesize)
     {
         var entries = await mediator.Send(new GetMainPageEntriesQuery(UserId,page,pagesize));
@@ -54,6 +57,7 @@ public class EntryController : BaseController
 
     [HttpGet]
     [Route("UserEntries")]
+    [Authorize]
     public async Task<IActionResult> GetUserEntries(string userName, Guid userId, int page, int pageSize)
     {
         if (userId == Guid.Empty && string.IsNullOrEmpty(userName))
@@ -69,6 +73,7 @@ public class EntryController : BaseController
 
     [HttpPost]
     [Route("CreateEntry")]
+    [Authorize]
     public async Task<IActionResult> CreateEntry([FromBody] CreateEntryCommand command)
     {
         if (!command.CreatedById.HasValue)
@@ -81,6 +86,7 @@ public class EntryController : BaseController
 
     [HttpPost]
     [Route("CreateEntryComment")]
+    [Authorize]
     public async Task<IActionResult> CreateEntryComment([FromBody] CreateEntryCommentCommand command)
     {
         if (!command.CreatedById.HasValue)
