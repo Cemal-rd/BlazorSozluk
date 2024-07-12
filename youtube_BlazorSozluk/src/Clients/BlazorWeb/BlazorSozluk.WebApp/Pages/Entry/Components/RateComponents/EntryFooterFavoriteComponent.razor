@@ -1,0 +1,16 @@
+﻿<h3>EntryFooterFavoriteComponent</h3>
+
+@code {
+    [Inject]
+    IIdentityService identityService { get; set; }
+
+    [Parameter]
+    public bool IsFavorited { get; set; }
+
+    [Parameter]
+    public Guid? EntryId { get; set; }
+
+    [Parameter]
+    public int FavoritedCount { get; set; }
+
+} 
