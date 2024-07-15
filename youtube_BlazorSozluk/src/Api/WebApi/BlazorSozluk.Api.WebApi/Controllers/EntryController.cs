@@ -31,7 +31,7 @@ public class EntryController : BaseController
     }
     [HttpGet]
     [Route("MainPageEntries")]
-    [Authorize]
+    
     public async Task<IActionResult> GetMainPageEntries(int page,int pagesize)
     {
         var entries = await mediator.Send(new GetMainPageEntriesQuery(UserId,page,pagesize));

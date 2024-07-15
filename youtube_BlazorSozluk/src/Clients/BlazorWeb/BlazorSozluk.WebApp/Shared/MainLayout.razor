@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 @inherits LayoutComponentBase
 
 <div class="navbar fixed-top text-white">
@@ -45,7 +45,7 @@
         }
 
     </div>
-
+    
     <AuthorizeView>
         <Authorized>
             <div class="top-nav">
@@ -85,7 +85,7 @@
         <a class="more-data" @onclick="@RefreshEntries">refresh</a>
 
         <ul class="list-group">
-            <EntriesComponent @ref="@entriesComponent"  />
+            <EntriesComponent @ref="@entriesComponent" />
         </ul>
 
     </div>

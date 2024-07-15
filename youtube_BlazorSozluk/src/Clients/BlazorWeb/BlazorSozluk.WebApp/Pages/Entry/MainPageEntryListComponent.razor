@@ -1,10 +1,9 @@
-﻿
-@if (entries != null)
+﻿@if (entries != null)
 {
     foreach (var entry in entries.Results)
     {
-                <EntryViewerComponent Entry="@entry" />
-                <br />
+        <EntryViewerComponent Entry="@entry" />
+        <br />
     }
 }
 
@@ -17,7 +16,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        entries = await entryService.GetMainPageEntries(1, 20);
-        
+        entries = await entryService.GetMainPageEntries(1, 10);
+        //TODO Pagination will be handled
     }
 }

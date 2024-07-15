@@ -14,17 +14,16 @@ builder.Services
     {
         opt.JsonSerializerOptions.PropertyNamingPolicy = null;
     })
-    .AddFluentValidation()
-        .ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
-
+    .AddFluentValidation();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.ConfigureAuth(builder.Configuration);
+
 builder.Services.AddApplicationRegistration();
 builder.Services.AddInfrastructureRegistration(builder.Configuration);
-builder.Services.ConfigureAuth(builder.Configuration);
 
 // Add Cors
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
@@ -47,10 +46,10 @@ app.UseHttpsRedirection();
 
 app.ConfigureExceptionHandling(app.Environment.IsDevelopment());
 
+app.UseCors("MyPolicy");
+
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseCors("MyPolicy");
 
 app.MapControllers();
 

@@ -1,4 +1,8 @@
-﻿<div class="container">
+﻿@using BlazorSozluk.WebApp.Infrastructure.Models
+@using Blazored.LocalStorage
+
+
+<div class="container">
     <span>
         <a class="p-1" title="Up vote!">
             <span class="oi oi-arrow-top entry-vote @(Vote == VoteType.UpVote ? "text-success":"text-secondary")"

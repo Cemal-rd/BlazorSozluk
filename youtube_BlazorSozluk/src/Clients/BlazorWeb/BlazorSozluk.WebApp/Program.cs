@@ -10,11 +10,14 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
+
+// HttpClient'i yapýlandýrýn ve AuthTokenHandler ile birlikte kullanýn
 builder.Services.AddHttpClient("WebApiClient", client =>
 {
     client.BaseAddress = new Uri("https://localhost:5001");
-
 }).AddHttpMessageHandler<AuthTokenHandler>();
+
+// HttpClient'i DI ile ekleyin
 builder.Services.AddScoped(sp =>
 {
     var clientFactory = sp.GetRequiredService<IHttpClientFactory>();
@@ -23,6 +26,7 @@ builder.Services.AddScoped(sp =>
 
 builder.Services.AddScoped<AuthTokenHandler>();
 
+// Servisleri ekleyin
 builder.Services.AddTransient<IEntryService, EntryService>();
 builder.Services.AddTransient<IVoteService, VoteService>();
 builder.Services.AddTransient<IFavService, FavService>();
@@ -30,10 +34,8 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IIdentityService, IdentityService>();
 builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 
+// BlazoredLocalStorage ve AuthorizationCore ekleyin
 builder.Services.AddBlazoredLocalStorage();
-
 builder.Services.AddAuthorizationCore();
-
-//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 await builder.Build().RunAsync();
