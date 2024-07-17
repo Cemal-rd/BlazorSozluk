@@ -2,6 +2,7 @@
 using BlazorSozluk.Common.Models.Queries;
 using BlazorSozluk.Common.Models.RequestModels;
 using BlazorSozluk.WebApp.Infrastructure.Services.Interfaces;
+using System.Net.Http;
 using System.Net.Http.Json;
 
 namespace BlazorSozluk.WebApp.Infrastructure.Services;

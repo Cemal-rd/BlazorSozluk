@@ -26,5 +26,7 @@ public class MappingProfile : Profile
             .ReverseMap();
         CreateMap<CreateEntryCommentCommand, EntryComment>()
             .ReverseMap();
+        CreateMap<UserDetailViewModel, User>()
+            .ReverseMap();
     }
 }
