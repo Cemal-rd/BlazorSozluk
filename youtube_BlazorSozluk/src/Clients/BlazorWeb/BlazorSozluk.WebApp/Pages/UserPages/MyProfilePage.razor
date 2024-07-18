@@ -29,6 +29,7 @@
     [Parameter]
     public Guid UserId { get; set; }
 
+    private int pageSize = 10;
     private int currentPage = 1;
 
 
@@ -39,7 +40,16 @@
     }
 
     protected override async Task OnInitializedAsync()
-    {
-        entries = await entryService.GetProfilePageEntries(currentPage, 20, UserName);
+{
+        if (!string.IsNullOrEmpty(UserName) && currentPage >= 0 && pageSize > 0)
+        {
+            var entries = await entryService.GetProfilePageEntries(currentPage, pageSize, UserName);
+            // buraya dikkat
+
     }
+    else
+    {
+       
+    }
+}
 }
