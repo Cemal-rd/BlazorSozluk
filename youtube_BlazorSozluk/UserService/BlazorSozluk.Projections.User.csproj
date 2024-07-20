@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-UserService-00b5da70-6f00-4639-8297-fd26a6189453</UserSecretsId>
+  </PropertyGroup>
+	
+	
+
+  <ItemGroup>
+	  <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+	  <PackageReference Include="Dapper" Version="2.0.123" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+	  <ProjectReference Include="..\src\Common\BlazorSozluk.Common\BlazorSozluk.Common.csproj" />
+  </ItemGroup>
+</Project>
