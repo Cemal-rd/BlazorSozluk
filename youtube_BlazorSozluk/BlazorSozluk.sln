@@ -39,6 +39,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSozluk.WebApp", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSozluk.Projections.User", "UserService\BlazorSozluk.Projections.User.csproj", "{BD12A4F5-4B72-49A8-98A2-A86AB124FC1E}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5649410A-D4AB-4B38-9538-0B993B76E80F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{85CFF8CE-4E0C-4875-BE6D-F1ADD189698C}"
+	ProjectSection(SolutionItems) = preProject
+		DockerSteps_External.txt = DockerSteps_External.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +88,10 @@ Global
 		{BD12A4F5-4B72-49A8-98A2-A86AB124FC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD12A4F5-4B72-49A8-98A2-A86AB124FC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD12A4F5-4B72-49A8-98A2-A86AB124FC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5649410A-D4AB-4B38-9538-0B993B76E80F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5649410A-D4AB-4B38-9538-0B993B76E80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5649410A-D4AB-4B38-9538-0B993B76E80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5649410A-D4AB-4B38-9538-0B993B76E80F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

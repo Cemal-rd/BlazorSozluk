@@ -40,9 +40,9 @@ public class EntryService : IEntryService
 
     public async Task<PagedViewModel<GetEntryDetailViewModel>> GetProfilePageEntries(int page, int pageSize, string userName = null)
     {
-        var response = await client.GetFromJsonAsync<PagedViewModel<GetEntryDetailViewModel>>($"api/entries/user/{userName}?page={page}&pageSize={pageSize}");
+        var result = await client.GetFromJsonAsync<PagedViewModel<GetEntryDetailViewModel>>($"/api/entry/UserEntries?userName={userName}&page={page}&pageSize={pageSize}");
 
-        return response;
+        return result;
     }
 
     public async Task<PagedViewModel<GetEntryCommentsViewModel>> GetEntryComments(Guid entryId, int page, int pageSize)

@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace BlazorSozluk.Common;
 public class SozlukConstants
 {
+#if DEBUG
+    public const string RabbitMQHost = "my-rabbitmq";
+#else
     public const string RabbitMQHost = "localhost";
+#endif
     public const string DefaultExchangeType = "direct";
 
 

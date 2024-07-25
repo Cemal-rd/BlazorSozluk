@@ -2,6 +2,7 @@
 using BlazorSozluk.Api.Application.Features.Queries.GetEntryComments;
 using BlazorSozluk.Api.Application.Features.Queries.GetEntryDetail;
 using BlazorSozluk.Api.Application.Features.Queries.GetMainPageEntries;
+using BlazorSozluk.Api.Application.Features.Queries.GetMyEntries;
 using BlazorSozluk.Api.Application.Features.Queries.GetUserEntries;
 using BlazorSozluk.Common.Models.Queries;
 using BlazorSozluk.Common.Models.RequestModels;
@@ -27,15 +28,12 @@ public class EntryController : BaseController
     public async Task<IActionResult> GetEntries([FromQuery] GetEntriesQuery query)
     {
         var entries = await mediator.Send(query);
+
         return Ok(entries);
     }
-    [HttpGet]
-    [Route("MainPageEntries")]
-    public async Task<IActionResult> GetMainPageEntries(int page, int pagesize)
-    {
-        var entries = await mediator.Send(new GetMainPageEntriesQuery(UserId, page, pagesize));
-        return Ok(entries);
-    }
+
+
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -56,6 +54,7 @@ public class EntryController : BaseController
 
     [HttpGet]
     [Route("UserEntries")]
+    [Authorize]
     public async Task<IActionResult> GetUserEntries(string userName, Guid userId, int page, int pageSize)
     {
         if (userId == Guid.Empty && string.IsNullOrEmpty(userName))
@@ -67,7 +66,14 @@ public class EntryController : BaseController
     }
 
 
+    [HttpGet]
+    [Route("MainPageEntries")]
+    public async Task<IActionResult> GetMainPageEntries(int page, int pageSize)
+    {
+        var entries = await mediator.Send(new GetMainPageEntriesQuery(UserId, page, pageSize));
 
+        return Ok(entries);
+    }
 
     [HttpPost]
     [Route("CreateEntry")]
@@ -94,6 +100,8 @@ public class EntryController : BaseController
 
         return Ok(result);
     }
+
+
     [HttpGet]
     [Route("Search")]
     public async Task<IActionResult> Search([FromQuery] SearchEntryQuery query)

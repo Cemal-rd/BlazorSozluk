@@ -1,0 +1,10 @@
+1) Create
+
+docker network create blazor_backend --attachable
+
+docker network create blazor_frontend --attachable
+
+2) add containers
+
+docker network connect blazor_backend my-rabbitmq
+
